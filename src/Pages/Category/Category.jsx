@@ -1,43 +1,45 @@
-import { useDispatch, useSelector } from "react-redux";
-import { createCategory } from "../../Features/Slices/categorySlice";
-import { useCategory } from "../../Hooks/use-category";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { reduxStore } from "../../Features/indexStates";
-const { sliceMethods} = reduxStore
-const Category = () => {
+import { useCategory } from "../../Hooks/use-category";
+const { sliceMethods } = reduxStore;
+      import Spline from '@splinetool/react-spline';
+
+
+export const Category = (props) => {
+  console.log(props)
+  // console.log(userModules);
   /* #####################################
                   HOOKS
    ##################################### */
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { categoryData, isCategoryLoading } = useCategory();
-  const [payload, setPayload] = useState({categoryTitle:""})
+  const [payload, setPayload] = useState({
+    categoryTitle: "",
 
+    categoryDescription: "",
+    count: "",
+  });
 
   /* #####################################
               API CALL METHODS
    ##################################### */
-  const create = () => {
-    dispatch(sliceMethods.createCategory(payload))
-  }
+  // const create = () => {
+  //   dispatch(sliceMethods.createCategory(payload));
+  // };
 
-  const update = () => {
-    dispatch(sliceMethods)
-  }
+  // const update = () => {
+  //   dispatch(sliceMethods);
+  // };
 
-  const deleteCategory =() => {
-    dispatch(sliceMethods)
-  }
+  // const deleteCategory = () => {
+  //   dispatch(sliceMethods);
+  // };
 
-
-  if (isCategoryLoading) return "Loading ...";
   return (
-    <div>
-      Category
-      {categoryData.map((category, index) => {
-        return <h1 key={index}>Mansab</h1>;
-      })}
-    </div>
+    <>
+
+    </>
   );
 };
 
-export default Category;

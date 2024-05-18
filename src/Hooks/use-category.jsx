@@ -12,7 +12,7 @@ export const useCategory = () => {
 
   useEffect(() => {
     dispatch(sliceMethods.getAllCategories({}));
-  }, []);
+  }, [dispatch, sliceMethods]);
 
   return {
     categoryData,

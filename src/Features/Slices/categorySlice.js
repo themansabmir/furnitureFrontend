@@ -13,7 +13,6 @@ export const createCategory = createAsyncThunk(
       return { data, msg };
     } catch (error) {
       const errMessage = error.response.data.msg;
-      console.log(errMessage);
       return rejectWithValue(errMessage);
     }
   }
@@ -24,7 +23,7 @@ export const getAllCategories = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const { data, count, msg } = await apiFeature.getAll("getall", payload);
-      console.log(data);
+
       return { data, count, msg };
     } catch (error) {
       return rejectWithValue(error.response.data.msg);
@@ -66,8 +65,9 @@ export const categorySlice = createSlice({
       .addCase(getAllCategories.rejected, (state, { payload }) => {
         state.isError = true;
         state.errorMessage = payload;
-      }).addCase(getAllCategories.pending, (state) => {
-        state.isLoading = true
+      })
+      .addCase(getAllCategories.pending, (state) => {
+        state.isLoading = true;
       });
   },
 }).reducer;
